@@ -1,13 +1,13 @@
 import { test } from '@playwright/test';
 
-export async function createNewArticle(page, article) {
+export async function createNewArticle(createArticlePage, article) {
     await test.step(`Create new article`, async () => {
         if (article) {
-            await page.fillTitleField(article.title ?? '');
-            await page.fillDescriptionField(article.description ?? '');
-            await page.fillTextField(article.text ?? '');
-            await page.fillTagsField(article.tags);
+            await createArticlePage.fillTitleField(article.title ?? '');
+            await createArticlePage.fillDescriptionField(article.description ?? '');
+            await createArticlePage.fillTextField(article.text ?? '');
+            await createArticlePage.fillTagsField(article.tags);
         }
-        await page.clickPublishArticleButton();
+        await createArticlePage.clickPublishArticleButton();
     });
 }

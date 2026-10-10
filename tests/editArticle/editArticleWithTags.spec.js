@@ -33,6 +33,7 @@ test('Add the tag for the existing article with tags', async () => {
     await createArticlePage.fillTagsField(tags);
     await createArticlePage.clickUpdateArticleButton();
     await viewArticlePage.assertArticleTagsAreVisible(tags);
+    await viewArticlePage.assertArticleTagsAreVisible(article.tags);
 });
 
 test('Remove an article tag for the existing article with tag', async () => {
