@@ -4,6 +4,7 @@ import { CreateArticlePage } from '../../src/ui/pages/article/CreateArticlePage'
 import { generateNewUserData } from '../../src/common/testData/generateNewUserData';
 import { signUpUser } from '../../src/ui/actions/auth/signUpUser';
 import { TITLE_CANNOT_BE_EMPTY } from '../../src/ui/constants/articleErrorMessages';
+import { createNewArticle } from '../../src/ui/actions/article/createNewArticle';
 
 let homePage;
 let createArticlePage;
@@ -19,6 +20,6 @@ test.beforeEach(async ({ page }) => {
 test('Creat an article without required fields', async () => {
   await homePage.clickNewArticleLink();
 
-  await createArticlePage.clickPublishArticleButton();
+  await createNewArticle(createArticlePage);
   await createArticlePage.assertErrorMessageContainsText(TITLE_CANNOT_BE_EMPTY);
 });
